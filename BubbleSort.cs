@@ -5,14 +5,14 @@ using System.Collections.Generic;
 
 namespace sortingAlgos
 {
-  public class BubbleSort : IEnumerable<int>
+  public class BubbleSort : IEnumerable<int[]>
   {
-    public IEnumerator<int> GetEnumerator()
+    public IEnumerator<int[]> GetEnumerator()
     {
-      return int;
+      return this.GetEnumerator();
     }
 
-    public IEnumerable<int> SortCollection(int[] collection)
+    public IEnumerable<int[]> SortCollection(int[] collection)
     {
       int temp;
       for (int j = 0; j <= collection.Length - 2; j++)
@@ -26,7 +26,7 @@ namespace sortingAlgos
             collection[i] = temp;
           }
         }
-        yield return collection[i];
+        yield return collection;
       }
     }
 
