@@ -13,7 +13,7 @@ namespace sortingAlgos
       return this.GetEnumerator();
     }
 
-    public IEnumerable<int[]> BubbleSort(int[] collection)
+    public static IEnumerable<int[]> BubbleSort(int[] collection)
     {
       int temp;
       yield return collection;
