@@ -9,15 +9,17 @@ export class BubbleSort extends Component {
     super(props);
     this.state = { collection: [], inputCollection: [], currentItteration: 0 };
     this.incrementItteration = this.incrementItteration.bind(this);
-    // this.handleChange = this.handleChange(input.target.value).bind(this);
   }
-  componentDidMount(inputCollection) {
+
+
+  componentDidMount() {
     // Simple POST request with a JSON body using fetch
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ collection: inputCollection }),
+      body: JSON.stringify({ collection: this.state.inputCollection }),
     };
+    console.log(requestOptions.body + " request body")
     fetch("sorting", requestOptions)
       .then((response) => response.json())
       .then((data) => this.setState({ collection: data }));
@@ -39,12 +41,12 @@ export class BubbleSort extends Component {
           <input
             placeholder="Enter collection to sort eg: 0,2,5,3,2,1,3"
             // onChange={this.handleChange}
-onChange={e => this.state.inputCollection.push(e.target.value)}
+onChange={e => this.state.inputCollection=(e.target.value)}
           />
-          {console.log(this.state.inputCollection)}
+          {console.log(this.state)}
           <button
             className="btn btn-primary"
-            onClick={this.componentDidMount(this.state.inputCollection)}
+            onClick={this.componentDidMount()}
           >
             {" "}
             Sort Collection
