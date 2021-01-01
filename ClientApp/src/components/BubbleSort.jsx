@@ -12,18 +12,19 @@ export class BubbleSort extends Component {
   }
 
 
-  componentDidMount() {
-    // Simple POST request with a JSON body using fetch
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ collection: this.state.inputCollection }),
-    };
-    console.log(requestOptions.body + " request body")
-    fetch("sorting", requestOptions)
-      .then((response) => response.json())
-      .then((data) => this.setState({ collection: data }));
-  }
+
+  // componentDidMount() {
+  //   // Simple POST request with a JSON body using fetch
+  //   const requestOptions = {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ collection: this.state.inputCollection }),
+  //   };
+  //   console.log(requestOptions.body + " request body")
+  //   fetch("sorter", requestOptions)
+  //     .then((response) => response.json())
+  //     .then((data) => this.setState({ collection: data }));
+  // }
 
 
   incrementItteration() {
@@ -31,6 +32,12 @@ export class BubbleSort extends Component {
       currentItteration: this.state.currentItteration + 1,
     });
   }
+  async populateCollection() {
+    const response = await fetch('sorter');
+    const data = await response.json();
+    this.setState({ collection: data });
+  }
+
 
 
   render() {
@@ -46,7 +53,7 @@ onChange={e => this.state.inputCollection=(e.target.value)}
           {console.log(this.state)}
           <button
             className="btn btn-primary"
-            onClick={this.componentDidMount()}
+            onClick={this.populateCollection()}
           >
             {" "}
             Sort Collection
@@ -69,6 +76,7 @@ onChange={e => this.state.inputCollection=(e.target.value)}
           </button>
         </div>
       </>
+
     );
   }
 }
