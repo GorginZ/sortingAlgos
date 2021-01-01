@@ -9,23 +9,24 @@ export class BubbleSort extends Component {
     super(props);
     this.state = { collection: [], inputCollection: [], currentItteration: 0 };
     this.incrementItteration = this.incrementItteration.bind(this);
+
+    this.handleChange = this.handleChange.bind(this);
+
   }
 
-
-
-  // componentDidMount() {
-  //   // Simple POST request with a JSON body using fetch
-  //   const requestOptions = {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ collection: this.state.inputCollection }),
-  //   };
-  //   console.log(requestOptions.body + " request body")
-  //   fetch("sorter", requestOptions)
-  //     .then((response) => response.json())
-  //     .then((data) => this.setState({ collection: data }));
-  // }
-
+  componentDidMount = () => {
+    // Simple POST request with a JSON body using fetch
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ collection: this.state.inputCollection }),
+    };
+    console.log(requestOptions.body + " request body");
+    console.log(this.state.inputCollection + "input collection");
+    fetch("sorter", requestOptions)
+      .then((response) => response.json())
+      .then((data) => this.setState({ collection: data }));
+  }
 
   incrementItteration() {
     this.setState({
@@ -33,12 +34,13 @@ export class BubbleSort extends Component {
     });
   }
   async populateCollection() {
-    const response = await fetch('sorter');
+    const response = await fetch("sorter");
     const data = await response.json();
     this.setState({ collection: data });
   }
-
-
+  handleChange = (event) => {
+    this.state.inputCollection = event.target.value;
+  };
 
   render() {
     return (
@@ -47,17 +49,16 @@ export class BubbleSort extends Component {
           <h4>Enter a collection to sort</h4>
           <input
             placeholder="Enter collection to sort eg: 0,2,5,3,2,1,3"
-            // onChange={this.handleChange}
-onChange={e => this.state.inputCollection=(e.target.value)}
+            onChange={this.handleChange}
           />
           {console.log(this.state)}
-          <button
+          {/* <button
             className="btn btn-primary"
-            onClick={this.populateCollection()}
+            onClick={this.componentDidMount()}
           >
             {" "}
             Sort Collection
-          </button>
+          </button> */}
         </div>
 
         <div>
@@ -70,13 +71,12 @@ onChange={e => this.state.inputCollection=(e.target.value)}
 
           <button
             className="btn btn-primary"
-            onClick={this.incrementItteration}
+            onClick={this.incrementItteration, this.componentDidMount}
           >
             Itterate
           </button>
         </div>
       </>
-
     );
   }
 }

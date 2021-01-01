@@ -5,7 +5,10 @@ using System.Text.Json;
 
 namespace sortingAlgos.Controllers
 {
-  public class SortingController
+    [ApiController]
+    [Route("[controller]")]
+
+  public class SortingController : ControllerBase
   {
     [HttpGet]
     public IEnumerable<int[]> Get()
