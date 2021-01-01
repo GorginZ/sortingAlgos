@@ -8,28 +8,34 @@ namespace sortingAlgos
 {
   public class Sorter : IEnumerable<int[]>
   {
+    public IEnumerable<int[]> SortedCollection;
+    public Sorter(int[] collection)
+    {
+      SortedCollection = BubbleSort(collection);
+    }
     public IEnumerable<int[]> Collection;
+
 
     public IEnumerator<int[]> GetEnumerator()
     {
       return this.GetEnumerator();
     }
-    public static int[] StringToIntArr(string collection)
-    {
-      var collectionCharArray = collection.Split(",");
-      var collectionIntArray = new int[collectionCharArray.Length];
+    // public static int[] StringToIntArr(string collection)
+    // {
+    //   var collectionCharArray = collection.Split(",");
+    //   var collectionIntArray = new int[collectionCharArray.Length];
 
-      // foreach(string no in collectionCharArray)
-      for (int i = 0; i < collectionCharArray.Length; i++)
-      {
-        var didParse = int.TryParse(collectionCharArray[i], out int result);
-        if (didParse)
-        {
-          collectionIntArray[i] = result;
-        }
-      }
-      return collectionIntArray;
-    }
+    //   // foreach(string no in collectionCharArray)
+    //   for (int i = 0; i < collectionCharArray.Length; i++)
+    //   {
+    //     var didParse = int.TryParse(collectionCharArray[i], out int result);
+    //     if (didParse)
+    //     {
+    //       collectionIntArray[i] = result;
+    //     }
+    //   }
+    //   return collectionIntArray;
+    // }
 
     public static IEnumerable<int[]> BubbleSort(int[] collection)
     {

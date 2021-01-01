@@ -23,7 +23,8 @@ export class BubbleSort extends Component {
     };
     console.log(requestOptions.body + " request body");
     console.log(this.state.inputCollection + "input collection");
-    fetch("sorter", requestOptions)
+    console.log(this.state.collection + " collection")
+    fetch("sorting", requestOptions)
       .then((response) => response.json())
       .then((data) => this.setState({ collection: data }));
   }
