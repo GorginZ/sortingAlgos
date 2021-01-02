@@ -35,20 +35,15 @@ namespace sortingAlgos.Controllers
       //   return sortedCollection.Collection.ToArray();
 
       // var collectionItterations = new Sorter(new int[] { 3, 3, 3, 2 });
+      
       var sorted = Sorter.BubbleSort(new int[] { 4, 4, 3, 2, 5, 5 });
       var listOfItterations = new List<int[]>();
 
       foreach (int[] collection in sorted)
       {
-        listOfItterations.Append(collection);
+        listOfItterations.Add(collection);
       }
       return listOfItterations;
-      // var listOfItterations = new List<int[]>();
-      // foreach (int[] collection in collectionItterations.Collection)
-      // {
-      //   listOfItterations.Append(collection);
-      // }
-      // return collectionItterations.ListSortedCollection;
 
       // return new List<int[]>{
       //   new int[]{5,4,3,2},

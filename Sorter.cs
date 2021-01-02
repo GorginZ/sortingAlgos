@@ -19,7 +19,6 @@ namespace sortingAlgos
       {
         ListSortedCollection.Append(itteration);
       }
-      // SortedCollection = (List<int[]>)BubbleSort(collection);
     }
     public IEnumerable<int[]> Collection;
 
