@@ -72,7 +72,7 @@ export class BubbleSort extends Component {
 
           <button
             className="btn btn-primary"
-            onClick={this.incrementItteration, this.componentDidMount}
+            onClick={this.componentDidMount}
           >
             Itterate
           </button>

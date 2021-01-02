@@ -9,9 +9,17 @@ namespace sortingAlgos
   public class Sorter : IEnumerable<int[]>
   {
     public IEnumerable<int[]> SortedCollection;
+    public List<int[]> ListSortedCollection;
     public Sorter(int[] collection)
     {
       SortedCollection = BubbleSort(collection);
+      var ListSortedCollection = new List<int[]>();
+
+      foreach (int[] itteration in SortedCollection)
+      {
+        ListSortedCollection.Append(itteration);
+      }
+      // SortedCollection = (List<int[]>)BubbleSort(collection);
     }
     public IEnumerable<int[]> Collection;
 

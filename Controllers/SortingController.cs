@@ -29,13 +29,32 @@ namespace sortingAlgos.Controllers
     [HttpPost]
     public IEnumerable<int[]> Post()
     {
-    // var collection = request.ToString();
-    //   var intCollection = Sorter.StringToIntArr(collection);
-    //   var sortedCollection = new Sorter(intCollection);
-    //   return sortedCollection.Collection.ToArray();
-      var collectionItterations = new Sorter(new int[] { 5, 4, 3, 2 });
-      return collectionItterations.Collection.ToArray();
+      // var collection = request.ToString();
+      //   var intCollection = Sorter.StringToIntArr(collection);
+      //   var sortedCollection = new Sorter(intCollection);
+      //   return sortedCollection.Collection.ToArray();
 
+      // var collectionItterations = new Sorter(new int[] { 3, 3, 3, 2 });
+      var sorted = Sorter.BubbleSort(new int[] { 4, 4, 3, 2, 5, 5 });
+      var listOfItterations = new List<int[]>();
+
+      foreach (int[] collection in sorted)
+      {
+        listOfItterations.Append(collection);
+      }
+      return listOfItterations;
+      // var listOfItterations = new List<int[]>();
+      // foreach (int[] collection in collectionItterations.Collection)
+      // {
+      //   listOfItterations.Append(collection);
+      // }
+      // return collectionItterations.ListSortedCollection;
+
+      // return new List<int[]>{
+      //   new int[]{5,4,3,2},
+      //   new int[]{4,3,2,1},
+      //   new int[]{5,4,3,4}
+      // }; 
     }
 
   }
