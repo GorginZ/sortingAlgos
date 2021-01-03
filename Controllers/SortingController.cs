@@ -32,14 +32,16 @@ namespace sortingAlgos.Controllers
     // return decerializedInput.ListSortedCollection;
 
     [HttpPost]
-    public IEnumerable<int[]> Post( [FromBody] string collection )
+    public IEnumerable<int[]> Post([FromBody] Collection collection)
     {
-      
+      // var sorter = new Sorter(collection.InputCollection);
+      // return sorter.ListSortedCollection;
+      // var myList = new List<int[]> { new int[4] { 0, 4, 3, 2 } };
+      var myList = new List<int[]> ();
 
-      var sorter = new Sorter(Sorter.StringToIntArr(collection.ToString()));
-
-
-      return sorter.ListSortedCollection;
+      myList.Add(collection.InputCollection);
+      return myList;
+      // return sorter.ListSortedCollection;
     }
 
     // [HttpPost]

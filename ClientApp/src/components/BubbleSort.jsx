@@ -19,7 +19,8 @@ export class BubbleSort extends Component {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ collection: this.state.inputCollection }),
+      body: JSON.stringify({ inputCollection: this.state.inputCollection }),
+
 
     };
     console.log(requestOptions.body + " request body");
