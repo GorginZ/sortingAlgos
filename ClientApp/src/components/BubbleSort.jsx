@@ -7,7 +7,7 @@ export class BubbleSort extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { collection: [], inputCollection: [], currentItteration: 0 };
+    this.state = { collection: [], inputCollection: [5,4,3], currentItteration: 0 };
     this.incrementItteration = this.incrementItteration.bind(this);
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,6 +20,7 @@ export class BubbleSort extends Component {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ collection: this.state.inputCollection }),
+
     };
     console.log(requestOptions.body + " request body");
     console.log(this.state.inputCollection + "input collection");

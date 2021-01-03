@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -25,31 +27,33 @@ namespace sortingAlgos.Controllers
       var collectionItterations = new Sorter(new int[] { 5, 4, 3, 2 });
       return collectionItterations.Collection;
     }
+    // var readOnlySpan = new ReadOnlySpan<byte>(jsonUtf8Bytes);
+    // var decerializedInput = JsonSerializer.Deserialize<Sorter>(readOnlySpan);
+    // return decerializedInput.ListSortedCollection;
 
     [HttpPost]
-    public IEnumerable<int[]> Post()
+    public IEnumerable<int[]> Post( [FromBody] string collection )
     {
-      var sorted = new Sorter(new int[]{5,4,3,2,1,6});
-      return sorted.ListSortedCollection;
-      // var sorted = Sorter.BubbleSort(new int[] { 4, 4, 3, 2, 5, 5 });
-      // return sorted;
+      
 
-      // var listOfItterations = new List<int[]>();
-      // listOfItterations.AddRange(sorted);
+      var sorter = new Sorter(Sorter.StringToIntArr(collection.ToString()));
 
-      // foreach (int[] collection in sorted)
-      // {
-      //   listOfItterations.Add(collection);
-      // }
 
-      // return listOfItterations;
-
-      // return new List<int[]>{
-      //   new int[]{5,4,3,2},
-      //   new int[]{4,3,2,1},
-      //   new int[]{5,4,3,4}
-      // }; 
+      return sorter.ListSortedCollection;
     }
+
+    // [HttpPost]
+    // public IEnumerable<int[]> Post(byte[] jsonUtf8Bytes)
+    // {
+    //   var readOnlySpan = new ReadOnlySpan<byte>(jsonUtf8Bytes);
+    //   var decerializedInput = JsonSerializer.Deserialize<JsonProperty>(readOnlySpan);
+    //   string collection = decerializedInput.ToString();
+    //   var intCollection = Sorter.StringToIntArr(collection);
+    //   var sorter = new Sorter(intCollection);
+
+
+    //   return sorter.ListSortedCollection;
+    // }
 
   }
 }
