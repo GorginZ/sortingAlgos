@@ -1,18 +1,16 @@
-
 import React, { PureComponent } from "react";
 import BarElement from "./BarElement";
 
 class Graph extends PureComponent {
   constructor(props) {
     super(props);
-    const state = { data: [] };
+    const state = { data: [], currentItteration: [] };
   }
-
-  componentDidMount() {
-    fetch(`https://pixabay.com/api/?key=17401644-d52a5734cec03a9bb1803044d&q=puppies&image_type=photo`)
-      .then((res) => res.json())
-      .then((data) => this.setState({ data: data }));
-  }
+// componentDidMount() {
+//     fetch(`https://pixabay.com/api/?key=17401644-d52a5734cec03a9bb1803044d&q=puppies&image_type=photo`)
+//       .then((res) => res.json())
+//       .then((data) => this.setState({ data: data, itteration: [0,4,3]}));
+//   }
 
   shuffle(array) {
     let counter = array.length;
@@ -34,22 +32,24 @@ class Graph extends PureComponent {
   }
 
   barChartConstructor = () => {
-    const barElements = [5,4,3,2,1,4,54,3,1,54]
-    // const barElements = [];
-    for (let i = 0; i < 10; i++) {
-      const image = this.state?.data.hits[i].webformatURL;
-    //   for (let a = 0; a < 2; a++) {
-        barElements.push(<BarElement image={image} value={i + 1} event={this.props.barElementEvent} />);
-      }
-    // }
-    return this.shuffle(barElements)
+    // const barElements = this.state.data
+    // const barElements = []
+    const barElements = [9, 4, 3, 2, 1, 4, 3, 4];
+    barElements.forEach((element) => {
+      barElements.push(
+        <BarElement value={element} event={this.props.barElementEvent} />
+      );
+    });
+    return barElements;
   };
 
   render() {
-    return <div id="grid">
-      <h1>GRAPH</h1>
-      {this.barChartConstructor()}
-    </div>;
+    return (
+      <div id="grid">
+        <h1>GRAPH</h1>
+        {this.barChartConstructor()}
+      </div>
+    );
   }
 }
 

@@ -9,7 +9,6 @@ const BarElement = (props) => {
     <div
       style={{
         height: props.value,
-        backgroundImage: `url(${props.image})`,
         backgroundSize: "150px",
         backgroundColor: "red",
       }}

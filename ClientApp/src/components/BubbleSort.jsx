@@ -61,9 +61,12 @@ export class BubbleSort extends Component {
             placeholder="Enter collection to sort eg: 0,2,5,3,2,1,3"
             onChange={this.handleChange}></input>
         </div>
-
+<div>
+  <h1>{this.state.collection}</h1>
+  {console.log(this.state.collection)}
+</div>
         <div>
-          <Graph barElementEvent={this.handleClick}></Graph>
+          <Graph data={this.state.collection[0]}barElementEvent={this.handleClick}></Graph>
         </div>
           <h1>Bubble Sort</h1>
           <p aria-live="polite">
