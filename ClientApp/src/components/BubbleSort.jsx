@@ -1,5 +1,9 @@
 import { Event, event } from "jquery";
 import React, { Component } from "react";
+import Graph from "./Graph";
+// import Visualizer from "./Visualizer";
+import { Visualizer } from "./Visualizer";
+// import { Visualizer } from "./Visualizer";
 // import CollectionInput from "./Input";
 
 export class BubbleSort extends Component {
@@ -55,33 +59,22 @@ export class BubbleSort extends Component {
           <h4>Enter a collection to sort</h4>
           <input
             placeholder="Enter collection to sort eg: 0,2,5,3,2,1,3"
-            onChange={this.handleChange}
-          />
-          {console.log(this.state)}
-          {/* <button
-            className="btn btn-primary"
-            onClick={this.componentDidMount()}
-          >
-            {" "}
-            Sort Collection
-          </button> */}
+            onChange={this.handleChange}></input>
         </div>
 
         <div>
+          <Graph barElementEvent={this.handleClick}></Graph>
+        </div>
           <h1>Bubble Sort</h1>
-          {/* <CollectionInput></CollectionInput> */}
-
           <p aria-live="polite">
             Current itteration: <strong>{this.state.currentItteration}</strong>
           </p>
-
           <button
             className="btn btn-primary"
             onClick={this.componentDidMount}
           >
             Itterate
           </button>
-        </div>
       </>
     );
   }
