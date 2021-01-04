@@ -34,13 +34,14 @@ class Graph extends PureComponent {
   }
 
   barChartConstructor = () => {
-    const barElements = [];
-    for (let i = 0; i < 8; i++) {
+    const barElements = [5,4,3,2,1,4,54,3,1,54]
+    // const barElements = [];
+    for (let i = 0; i < 10; i++) {
       const image = this.state?.data.hits[i].webformatURL;
-      for (let a = 0; a < 2; a++) {
+    //   for (let a = 0; a < 2; a++) {
         barElements.push(<BarElement image={image} value={i + 1} event={this.props.barElementEvent} />);
       }
-    }
+    // }
     return this.shuffle(barElements)
   };
 
