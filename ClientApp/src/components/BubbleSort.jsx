@@ -7,7 +7,7 @@ export class BubbleSort extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { collection: [], inputCollection: [5,4,3], currentItteration: 0 };
+    this.state = { collection: [], inputCollection: "", currentItteration: 0 };
     this.incrementItteration = this.incrementItteration.bind(this);
 
     this.handleChange = this.handleChange.bind(this);
@@ -45,6 +45,7 @@ export class BubbleSort extends Component {
   }
   handleChange = (event) => {
     this.state.inputCollection = event.target.value;
+    // this.state.inputCollection = [event.target.value.to];
   };
 
   render() {
