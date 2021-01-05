@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import RandColour from "./Colour";
+import Colour from "./Colour";
 
 const BarElement = (props) => {
   const [colour, setColour] = useState(props.colour);
@@ -7,9 +9,9 @@ const BarElement = (props) => {
   return (
     <div
       style={{
-        height: props.value,
+        height: props.value * 2,
         backgroundSize: "150px",
-        backgroundColor: "red",
+        backgroundColor: "pink",
       }}
       onClick={props.event}
       id={value}

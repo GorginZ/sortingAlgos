@@ -32,8 +32,8 @@ export class BubbleSort extends Component {
     this.setState({
       collection: this.state.collection, currentItteration: this.state.currentItteration + 1,
     });
-    // this.state.currentItteration = this.state.currentItteration + 1;
   }
+
   async populateCollection() {
     const response = await fetch("sorter");
     const data = await response.json();

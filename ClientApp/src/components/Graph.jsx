@@ -19,7 +19,7 @@ class Graph extends PureComponent {
     bars[0].forEach((element) => {
       console.log(element + " element");
       barElements.push(
-        <BarElement value={element} event={this.props.barElementEvent} />
+        <BarElement value={element} event={this.props.barElementEvent} colour={400} />
       );
     });
     return barElements;
