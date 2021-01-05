@@ -8,11 +8,15 @@ export class BubbleSort extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { collection: [], inputCollection: "", currentItteration: 0 };
+    // this.state = { collection: [], inputCollection: "", currentItteration: 0 };
+    this.state = { collection: [[]], inputCollection: "", currentItteration: 0 };
+
+    // this.state = { collection: [[5,4,3,2,1], [4,5,2,1,3]], inputCollection: "0,5,4,3,8,8,4,4", currentItteration: 0 };
+
     this.incrementItteration = this.incrementItteration.bind(this);
 
-    this.handleChange = this.handleChange.bind(this);
 
+    this.handleChange = this.handleChange.bind(this);
   }
 
   getSortedItterationsData = () => {
@@ -20,12 +24,12 @@ export class BubbleSort extends Component {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       // body: JSON.stringify({ "Collection": {inputCollection: this.state.inputCollection }}),
-      body: JSON.stringify( this.state.inputCollection ),
+      body: JSON.stringify(this.state.inputCollection),
     };
     fetch("sorting", requestOptions)
       .then((response) => response.json())
       .then((data) => this.setState({ collection: data }));
-  }
+  };
 
   incrementItteration() {
     // this.setState({
@@ -40,7 +44,6 @@ export class BubbleSort extends Component {
   }
   handleChange = (event) => {
     this.state.inputCollection = event.target.value;
-    // this.state.inputCollection = [event.target.value.to];
   };
 
   render() {
@@ -50,29 +53,26 @@ export class BubbleSort extends Component {
           <h4>Enter a collection to sort</h4>
           <input
             placeholder="Enter collection to sort eg: 0,2,5,3,2,1,3"
-            onChange={this.handleChange}></input>
+            onChange={this.handleChange}
+          ></input>
         </div>
-<div>
-  <h1>{this.state.collection}</h1>
-  {console.log(this.state.collection)}
-</div>
-        <div>
-          {console.log(this.state.collection[this.state.currentItteration])}
+        {console.log(this.state.collection[this.state.currentItteration])}
 
-        {/* <BarElement value={element} event={this.props.barElementEvent} /> */}
+        <Graph
+          data={this.state.collection[this.state.currentItteration]}
+        ></Graph>
 
-          <Graph data={[this.state.collection[this.state.currentItteration]]}></Graph>
-        </div>
-          <h1>Bubble Sort</h1>
-          <p aria-live="polite">
-            Current itteration: <strong>{this.state.currentItteration}</strong>
-          </p>
-          <button
-            className="btn btn-primary"
-            onClick={this.getSortedItterationsData}
-          >
-            Itterate
-          </button>
+        {/* <Graph data={[9,4,3,2,1]}></Graph> */}
+        <h1>Bubble Sort</h1>
+        <p aria-live="polite">
+          Current itteration: <strong>{this.state.currentItteration}</strong>
+        </p>
+        <button
+          className="btn btn-primary"
+          onClick={this.getSortedItterationsData}
+        >
+          SortCollection
+        </button>
       </>
     );
   }
