@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const BarElement = (props) => {
   const [colour, setColour] = useState(props.colour);
-  // const { pairId } = props;
   const { value } = props;
 
   return (

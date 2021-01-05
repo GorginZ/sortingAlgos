@@ -4,37 +4,26 @@ import BarElement from "./BarElement";
 class Graph extends PureComponent {
   constructor(props) {
     super(props);
-    const state = { data: [], currentItteration: [] };
+  const { data } = props;
+    // const barElements = props;
+
+
+  console.log(props[0] + " props constructor")
+  // const [data, setData] = useState(props);
+  // console.log(props.data)
+
+    // const state = { data: this.props, currentItteration: [] };
+    // const state = {data: this.state} 
+    
   }
-// componentDidMount() {
-//     fetch(`https://pixabay.com/api/?key=17401644-d52a5734cec03a9bb1803044d&q=puppies&image_type=photo`)
-//       .then((res) => res.json())
-//       .then((data) => this.setState({ data: data, itteration: [0,4,3]}));
-//   }
 
-  shuffle(array) {
-    let counter = array.length;
-
-    // While there are elements in the array
-    while (counter > 0) {
-      // Pick a random index
-      let index = Math.floor(Math.random() * counter);
-
-      // Decrease counter by 1
-      counter--;
-
-      // And swap the last element with it
-      let temp = array[counter];
-      array[counter] = array[index];
-      array[index] = temp;
-    }
-    return array;
-  }
 
   barChartConstructor = () => {
-    // const barElements = this.state.data
-    // const barElements = []
-    const barElements = [9, 4, 3, 2, 1, 4, 3, 4];
+    console.log(this.props.data)
+    const barElements = this.props.data;
+    // const barElements = this.props;
+    // const barElements = [0,0,9,8,7,7,6,5,4,3,2];
+
     barElements.forEach((element) => {
       barElements.push(
         <BarElement value={element} event={this.props.barElementEvent} />

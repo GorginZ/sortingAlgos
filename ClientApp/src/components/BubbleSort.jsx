@@ -1,10 +1,7 @@
 import { Event, event } from "jquery";
 import React, { Component } from "react";
 import Graph from "./Graph";
-// import Visualizer from "./Visualizer";
 import { Visualizer } from "./Visualizer";
-// import { Visualizer } from "./Visualizer";
-// import CollectionInput from "./Input";
 
 export class BubbleSort extends Component {
   static displayName = BubbleSort.name;
@@ -18,29 +15,23 @@ export class BubbleSort extends Component {
 
   }
 
-  componentDidMount = () => {
-    // Simple POST request with a JSON body using fetch
+  getSortedItterationsData = () => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       // body: JSON.stringify({ "Collection": {inputCollection: this.state.inputCollection }}),
       body: JSON.stringify( this.state.inputCollection ),
-
-
-
     };
-    console.log(requestOptions.body + " request body");
-    console.log(this.state.inputCollection + "input collection");
-    console.log(this.state.collection + " collection")
     fetch("sorting", requestOptions)
       .then((response) => response.json())
       .then((data) => this.setState({ collection: data }));
   }
 
   incrementItteration() {
-    this.setState({
-      currentItteration: this.state.currentItteration + 1,
-    });
+    // this.setState({
+    //   currentItteration: this.state.currentItteration + 1,
+    // });
+    this.state.currentItteration = this.state.currentItteration + 1;
   }
   async populateCollection() {
     const response = await fetch("sorter");
@@ -66,7 +57,11 @@ export class BubbleSort extends Component {
   {console.log(this.state.collection)}
 </div>
         <div>
-          <Graph data={this.state.collection[0]}barElementEvent={this.handleClick}></Graph>
+          {console.log(this.state.collection[this.state.currentItteration])}
+
+        {/* <BarElement value={element} event={this.props.barElementEvent} /> */}
+
+          <Graph data={[this.state.collection[this.state.currentItteration]]}></Graph>
         </div>
           <h1>Bubble Sort</h1>
           <p aria-live="polite">
@@ -74,7 +69,7 @@ export class BubbleSort extends Component {
           </p>
           <button
             className="btn btn-primary"
-            onClick={this.componentDidMount}
+            onClick={this.getSortedItterationsData}
           >
             Itterate
           </button>
