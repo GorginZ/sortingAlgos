@@ -10,9 +10,6 @@ export class BubbleSort extends Component {
     super(props);
     // this.state = { collection: [], inputCollection: "", currentItteration: 0 };
     this.state = { collection: [[]], inputCollection: "", currentItteration: 0 };
-
-    // this.state = { collection: [[5,4,3,2,1], [4,5,2,1,3]], inputCollection: "0,5,4,3,8,8,4,4", currentItteration: 0 };
-
     this.incrementItteration = this.incrementItteration.bind(this);
 
 
@@ -32,10 +29,10 @@ export class BubbleSort extends Component {
   };
 
   incrementItteration() {
-    // this.setState({
-    //   currentItteration: this.state.currentItteration + 1,
-    // });
-    this.state.currentItteration = this.state.currentItteration + 1;
+    this.setState({
+      collection: this.state.collection, currentItteration: this.state.currentItteration + 1,
+    });
+    // this.state.currentItteration = this.state.currentItteration + 1;
   }
   async populateCollection() {
     const response = await fetch("sorter");
@@ -73,6 +70,13 @@ export class BubbleSort extends Component {
         >
           SortCollection
         </button>
+        <button
+          className="btn btn-primary"
+          onClick={this.incrementItteration}
+        >
+          Itterate
+        </button>
+
       </>
     );
   }
