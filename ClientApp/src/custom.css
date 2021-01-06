@@ -12,3 +12,11 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+.barElement {
+  height: 100px;
+  width: 40px;
+  border: 1px solid rgb(216, 143, 206);
+  float: left;
+  display: inline;
+}
