@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import RandColour from "./Colour";
+import ColourFromValue from "./Colour";
 import Colour from "./Colour";
 
 const BarElement = (props) => {
@@ -11,9 +11,7 @@ const BarElement = (props) => {
       style={{
         height: props.value * 2,
         backgroundSize: "150px",
-        // backgroundColor: "pink",
         backgroundColor: props.colour
-        // backgroundColor: RandColour()
       }}
       onClick={props.event}
       id={value}

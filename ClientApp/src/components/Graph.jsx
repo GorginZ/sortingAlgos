@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { setScrollbarWidth } from "reactstrap/lib/utils";
 import BarElement from "./BarElement";
-import RandColour from "./Colour";
+import ColourFromValue from "./Colour";
 
 class Graph extends PureComponent {
   constructor(props) {
@@ -16,10 +16,10 @@ class Graph extends PureComponent {
     console.log(this.state.itteration + "itteration");
     const bars = [this.state.itteration];
 
-    bars[0].forEach((element) => {
+    bars[0] && bars[0].forEach((element) => {
       console.log(element + " element");
       barElements.push(
-        <BarElement value={element} event={this.props.barElementEvent} colour={RandColour()} />
+        <BarElement value={element} event={this.props.barElementEvent} colour={ColourFromValue(element)} />
       );
     });
     return barElements;
