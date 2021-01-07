@@ -11,7 +11,9 @@ const BarElement = (props) => {
       style={{
         height: props.value * 2,
         backgroundSize: "150px",
-        backgroundColor: "pink",
+        // backgroundColor: "pink",
+        backgroundColor: props.colour
+        // backgroundColor: RandColour()
       }}
       onClick={props.event}
       id={value}

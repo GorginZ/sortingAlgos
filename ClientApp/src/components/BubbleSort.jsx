@@ -54,7 +54,7 @@ export class BubbleSort extends Component {
                   onChange={this.handleChange}
                 ></input>
               </div>
-              <Graph
+              <Graph className="graphElement"
                 data={this.state.collection[currentItteration]}
               ></Graph>
               <p aria-live="polite">

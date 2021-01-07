@@ -15,7 +15,7 @@ code {
 
 .barElement {
   height: 100px;
-  width: 40px;
+  width: 10px;
   border: 1px solid rgb(216, 143, 206);
   float: left;
   display: inline;
@@ -29,6 +29,11 @@ code {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  color: white;
+}
+.graphElement {
+  margin: auto;
+  display: inline-flexbox;
   color: white;
 }
 
