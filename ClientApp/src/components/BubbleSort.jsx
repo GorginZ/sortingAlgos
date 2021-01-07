@@ -1,6 +1,7 @@
-import { Event, event } from "jquery";
+import { Event, event, timers } from "jquery";
 import React, { Component } from "react";
 import Graph from "./Graph";
+import Timer, { TimerContext } from "./Timer";
 import { Visualizer } from "./Visualizer";
 
 export class BubbleSort extends Component {
@@ -8,10 +9,11 @@ export class BubbleSort extends Component {
 
   constructor(props) {
     super(props);
-    // this.state = { collection: [], inputCollection: "", currentItteration: 0 };
-    this.state = { collection: [[]], inputCollection: "", currentItteration: 0 };
-    this.incrementItteration = this.incrementItteration.bind(this);
 
+    this.state = {
+      collection: [[]],
+      inputCollection: "",
+    };
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -28,11 +30,6 @@ export class BubbleSort extends Component {
       .then((data) => this.setState({ collection: data }));
   };
 
-  incrementItteration() {
-    this.setState({
-      collection: this.state.collection, currentItteration: this.state.currentItteration + 1,
-    });
-  }
 
   async populateCollection() {
     const response = await fetch("sorter");
@@ -45,39 +42,41 @@ export class BubbleSort extends Component {
 
   render() {
     return (
-      <>
-        <div>
-          <h4>Enter a collection to sort</h4>
-          <input
-            placeholder="Enter collection to sort eg: 0,2,5,3,2,1,3"
-            onChange={this.handleChange}
-          ></input>
-        </div>
-        {console.log(this.state.collection[this.state.currentItteration])}
-
-        <Graph
-          data={this.state.collection[this.state.currentItteration]}
-        ></Graph>
-
-        {/* <Graph data={[9,4,3,2,1]}></Graph> */}
-        <h1>Bubble Sort</h1>
-        <p aria-live="polite">
-          Current itteration: <strong>{this.state.currentItteration}</strong>
-        </p>
-        <button
-          className="btn btn-primary"
-          onClick={this.getSortedItterationsData}
-        >
-          SortCollection
-        </button>
-        <button
-          className="btn btn-primary"
-          onClick={this.incrementItteration}
-        >
-          Itterate
-        </button>
-
-      </>
+      <Timer>
+        <TimerContext.Consumer>
+          {(currentItteration) => (
+            <>
+              <h1>Bubble Sort</h1>
+              <div>
+                <h4>Enter a collection to sort</h4>
+                <input
+                  placeholder="Enter collection to sort eg: 0,2,5,3,2,1,3"
+                  onChange={this.handleChange}
+                ></input>
+              </div>
+              <Graph
+                data={this.state.collection[currentItteration]}
+              ></Graph>
+              <p aria-live="polite">
+                Current itteration:{" "}
+                <strong>{currentItteration}</strong>
+              </p>
+              <button
+                className="btn btn-primary"
+                onClick={this.getSortedItterationsData}
+              >
+                SortCollection
+              </button>
+              {/* <button
+                className="btn btn-primary"
+                onClick={this.incrementItteration}
+              >
+                Itterate
+              </button> */}
+            </>
+          )}
+        </TimerContext.Consumer>
+      </Timer>
     );
   }
 }

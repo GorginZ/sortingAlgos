@@ -5,7 +5,6 @@ import BarElement from "./BarElement";
 class Graph extends PureComponent {
   constructor(props) {
     super(props);
-    const { data } = props;
     this.state = { itteration: [] };
   }
 
@@ -28,7 +27,6 @@ class Graph extends PureComponent {
   render() {
     return (
       <div id="grid">
-        <h1>GRAPH</h1>
         {this.barChartConstructor()}
       </div>
     );
