@@ -1,10 +1,34 @@
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+  color: #a65b79;
 }
 
 code {
   color: #E01A76;
+}
+/* .inputField{
+  text-align: center;
+  background-color: #282c34;
+  min-width: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+} */
+.inputContainer {
+  text-align: center;
+  background-color: #5a8965;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+;
 }
 
 .btn-primary {
@@ -32,9 +56,17 @@ code {
   color: white;
 }
 .graphElement {
-  margin: auto;
+  /* margin: auto;
   display: inline-flexbox;
-  color: white;
+  color: white; */
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: white
 }
 
 .time {
@@ -68,7 +100,7 @@ code {
 }
 
 .button-primary-inactive {
-  background-color: #3151ff;
-  border: 1px solid #152684;
-  color: white;
+  background-color: #ffd981;
+  border: 1px solid #ff8e23;
+  color: rgb(0, 0, 0);
 }

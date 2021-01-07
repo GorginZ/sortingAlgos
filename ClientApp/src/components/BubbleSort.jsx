@@ -30,7 +30,6 @@ export class BubbleSort extends Component {
       .then((data) => this.setState({ collection: data }));
   };
 
-
   async populateCollection() {
     const response = await fetch("sorter");
     const data = await response.json();
@@ -47,32 +46,29 @@ export class BubbleSort extends Component {
           {(currentItteration) => (
             <>
               <h1>Bubble Sort</h1>
-              <div>
-                <h4>Enter a collection to sort</h4>
-                <input
-                  placeholder="Enter collection to sort eg: 0,2,5,3,2,1,3"
-                  onChange={this.handleChange}
-                ></input>
-              </div>
-              <Graph className="graphElement"
+
+              <Graph
+                className="graphElement"
                 data={this.state.collection[currentItteration]}
               ></Graph>
+
+              <div className="inputContainer">
+                <h4>Enter a collection to sort</h4>
+                <input
+                  className="inputField"
+                  placeholder="eg: 90,4,5,23,5,4,3,2,89"
+                  onChange={this.handleChange}
+                ></input>
+                <button
+                  className="btn btn-primary"
+                  onClick={this.getSortedItterationsData}
+                >
+                  SortCollection
+                </button>
+              </div>
               <p aria-live="polite">
-                Current itteration:{" "}
-                <strong>{currentItteration}</strong>
+                Current itteration: <strong>{currentItteration}</strong>
               </p>
-              <button
-                className="btn btn-primary"
-                onClick={this.getSortedItterationsData}
-              >
-                SortCollection
-              </button>
-              {/* <button
-                className="btn btn-primary"
-                onClick={this.incrementItteration}
-              >
-                Itterate
-              </button> */}
             </>
           )}
         </TimerContext.Consumer>
