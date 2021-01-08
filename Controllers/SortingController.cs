@@ -34,7 +34,5 @@ namespace sortingAlgos.Controllers
       var sorter = new Sorter(Sorter.StringToIntArr(collection));
       return sorter.ListSortedCollection;
     }
-
-
   }
 }
