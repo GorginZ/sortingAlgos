@@ -34,14 +34,19 @@ const Timer = (props) => {
   return (
     <TimerContext.Provider value={seconds}>
       {props.children}
- <div className="row">
-        <button className={`button button-primary button-primary-${isActive ? 'active' : 'inactive'}`} onClick={toggle}>
-          {isActive ? 'Pause Itteration' : 'Start Itterating'}
+      {/* <div className="itteratorBox"> */}
+        <button
+          className={`button button-primary button-primary-${
+            isActive ? "active" : "inactive"
+          }`}
+          onClick={toggle}
+        >
+          {isActive ? "Pause Itteration" : "Start Itterating"}
         </button>
         <button className="button" onClick={reset}>
           Reset
         </button>
-      </div>
+      {/* </div> */}
     </TimerContext.Provider>
   );
 };

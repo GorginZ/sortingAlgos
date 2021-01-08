@@ -46,25 +46,35 @@ export class BubbleSort extends Component {
           {(currentItteration) => (
             <>
               <h1>Bubble Sort</h1>
-
-              <Graph
-                className="graphElement"
-                data={this.state.collection[currentItteration]}
-              ></Graph>
+              <div className="mainText">
+                <p>
+                  To see bubble sort in action, enter a collcetion below, eg:
+                  34,5,4,28,4,38,99,23,12,4,3,2,5,8,5,4,3,2,4,5, hit sort
+                  collection - this will get a collection of each itteration of
+                  the sort. Hit 'Start Itterating' to tick through each step of
+                  the sort. You can pause and re-set the ticker
+                </p>
+              </div>
 
               <div className="inputContainer">
-                <h4>Enter a collection to sort</h4>
-                <input
-                  className="inputField"
-                  placeholder="eg: 90,4,5,23,5,4,3,2,89"
-                  onChange={this.handleChange}
-                ></input>
-                <button
-                  className="btn btn-primary"
-                  onClick={this.getSortedItterationsData}
-                >
-                  SortCollection
-                </button>
+                <Graph
+                  className="graphElement"
+                  data={this.state.collection[currentItteration]}
+                ></Graph>
+
+                <div className="inputField">
+                  <input
+                    className="inputField"
+                    placeholder=""
+                    onChange={this.handleChange}
+                  ></input>
+                  <button
+                    className="button"
+                    onClick={this.getSortedItterationsData}
+                  >
+                    Get Sorted Collection
+                  </button>
+                </div>
               </div>
               <p aria-live="polite">
                 Current itteration: <strong>{currentItteration}</strong>

@@ -10,14 +10,11 @@ class Graph extends PureComponent {
   }
 
   barChartConstructor = () => {
-    console.log(this.props.data);
     const barElements = [];
     this.setState({ itteration: this.props.data });
-    console.log(this.state.itteration + "itteration");
     const bars = [this.state.itteration];
 
     bars[0] && bars[0].forEach((element) => {
-      console.log(element + " element");
       barElements.push(
         <BarElement value={element} event={this.props.barElementEvent} colour={ColourFromValue(element)} />
       );
